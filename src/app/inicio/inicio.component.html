@@ -32,11 +32,15 @@
   <nav>
     <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
 
-      <a class="nav-item nav-link active text-secondary font-weight-bold" id="nav-todasPostagens-tab" data-toggle="tab" href="#todasPostagens" role="tab" aria-controls="nav-todasPostagens" aria-selected="true">Todas as Postagens</a>
+      <a class="nav-item nav-link active text-secondary font-weight-bold" id="nav-todasPostagens-tab" data-toggle="tab"
+        href="#todasPostagens" role="tab" aria-controls="nav-todasPostagens" aria-selected="true">Todas as Postagens</a>
 
-      <a (click)='findByIdUser()'  class="nav-item nav-link text-secondary font-weight-bold" id="nav-minhasPostagens-tab" data-toggle="tab" href="#minhasPostagens" role="tab" aria-controls="nav-minhasPostagens" aria-selected="false">Minhas Postagens</a>
+      <a (click)='findByIdUser()' class="nav-item nav-link text-secondary font-weight-bold" id="nav-minhasPostagens-tab"
+        data-toggle="tab" href="#minhasPostagens" role="tab" aria-controls="nav-minhasPostagens"
+        aria-selected="false">Minhas Postagens</a>
 
-      <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-postagemTema-tab" data-toggle="tab" href="#postagemTema" role="tab" aria-controls="nav-postagemTema" aria-selected="false">Postagens por tema</a>
+      <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-postagemTema-tab" data-toggle="tab"
+        href="#postagemTema" role="tab" aria-controls="nav-postagemTema" aria-selected="false">Postagens por tema</a>
 
     </div>
   </nav>
@@ -48,25 +52,26 @@
       <div class="row d-flex justify-content-center mt-5 mb-5">
         <div class="col-md-4">
           <div class="form-group">
-            <input type="text" class="form-control" id="titulo" placeholder="Digite um titulo de postagem para pesquisar" [(ngModel)]='tituloPost' (keyup)='findByTituloPostagem()'>
+            <input type="text" class="form-control" id="titulo"
+              placeholder="Digite um titulo de postagem para pesquisar" [(ngModel)]='tituloPost'
+              (keyup)='findByTituloPostagem()'>
           </div>
         </div>
       </div>
 
       <div class="card-columns">
-        <div class="card text-center"
-        *ngFor='let item of listaPostagens | orderBy : key : reverse'>
+        <div class="card text-center" *ngFor='let item of listaPostagens | orderBy : key : reverse'>
           <div class="card-body">
             <h5 class="card-title m-0">{{item.titulo}}</h5>
             <small class="text-muted"> Tema: {{item.tema.descricao}}</small>
             <p class="card-text mt-3">{{item.texto}}</p>
             <p class="card-text"><small class="text-muted">
-              {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}
-            </small></p>
+                {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}
+              </small></p>
 
             <p class="card-text"><small class="text-muted">
-              by: {{item.usuario.nome}}
-            </small></p>
+                by: {{item.usuario.nome}}
+              </small></p>
           </div>
         </div>
       </div>
@@ -83,8 +88,8 @@
             <small class="text-muted"> Tema: {{item.tema.descricao}}</small>
             <p class="card-text mt-3">{{item.texto}}</p>
             <p class="card-text"><small class="text-muted">
-              {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}
-            </small></p>
+                {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}
+              </small></p>
 
             <a [routerLink]="['/postagem-edit', item.id]" class="text-info mr-3" href="">Editar</a>
             <a [routerLink]="['/postagem-delete', item.id]" class="text-danger" href="">Apagar</a>
@@ -100,7 +105,8 @@
       <div class="row d-flex justify-content-center mt-5 mb-5">
         <div class="col-md-4">
           <div class="form-group">
-            <input type="text" class="form-control" id="titulo" placeholder="Digite um tema para pesquisar" [(ngModel)]='nomeTema' (keyup)='findByNomeTema()'>
+            <input type="text" class="form-control" id="titulo" placeholder="Digite um tema para pesquisar"
+              [(ngModel)]='nomeTema' (keyup)='findByNomeTema()'>
           </div>
         </div>
       </div>
@@ -109,14 +115,15 @@
         <div class="card text-center" *ngFor='let item of tema.postagem | orderBy : key : reverse'>
           <div class="card-body">
             <h5 class="card-title m-0">{{item.titulo}}</h5>
+            <small class="text-muted"> Tema: {{tema.descricao}}</small>
             <p class="card-text mt-3">{{item.texto}}</p>
             <p class="card-text"><small class="text-muted">
-              {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}
-            </small></p>
+                {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}
+              </small></p>
 
             <p class="card-text"><small class="text-muted">
-              by: {{item.usuario.nome}}
-            </small></p>
+                by: {{item.usuario.nome}}
+              </small></p>
 
           </div>
         </div>
@@ -132,7 +139,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="novaPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+<div class="modal fade" id="novaPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -145,7 +153,8 @@
 
         <div class="form-group">
           <label for="titulo">Título</label>
-          <input [(ngModel)]='postagem.titulo' type="text" class="form-control" id="titulo" placeholder="Digite o título">
+          <input [(ngModel)]='postagem.titulo' type="text" class="form-control" id="titulo"
+            placeholder="Digite o título">
         </div>
 
         <div class="form-group">
@@ -154,8 +163,11 @@
         </div>
 
         <div class="form-group">
-          <label for="texto">Escolha um tema ou <a data-dismiss="modal" routerLink='/tema'>cadastre um novo</a>: </label>
-          <select name="tema" id="tema" class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
+          <label for="texto">Escolha um tema ou <a data-dismiss="modal" routerLink='/tema'>cadastre um novo</a>:
+          </label>
+          <select class="ls-select" name="tema" id="tema" class="form-control" (change)='temas($event)'
+            (change)='findByIdTema()'>
+            <option selected>Choose...</option>
             <option *ngFor='let item of listaTemas' value="{{item.id}}">
               {{item.descricao}}
             </option>

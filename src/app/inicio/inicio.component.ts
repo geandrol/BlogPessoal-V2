@@ -75,6 +75,11 @@ export class InicioComponent implements OnInit {
     })
   }
 
+  temas(event: any){
+    this.idTema = event.target.value
+  }
+
+
   publicar(){
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
@@ -111,3 +116,5 @@ export class InicioComponent implements OnInit {
   }
 
 }
+
+

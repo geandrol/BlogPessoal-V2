@@ -34,6 +34,8 @@ export class EntrarComponent implements OnInit {
       environment.id = this.userLogin.id
       environment.tipo = this.userLogin.tipo
 
+      console.log(environment.tipo)
+
       this.router.navigate(['/inicio'])
     }, erro =>{
       if(erro.status == 500){
